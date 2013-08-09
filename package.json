@@ -1,0 +1,15 @@
+{
+  "name": "neu-liferay-theme",
+  "author": "http://madebycabin.com/",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cabin/neu-liferay-theme.git"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-sass": "~0.4.1",
+    "grunt-contrib-watch": "~0.5.1"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "neu-liferay-theme",
+  "version": "0.0.1",
+  "dependencies": {
+    "neu-style": "/Users/zakj/src/cabin/neu/style"
+  }
+}

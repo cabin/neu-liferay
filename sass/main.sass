@@ -1,0 +1,61 @@
+@import neu-style/neu
++neu('.public-wrapper')
+
+// XXX revisit mobile-first
+$page-width: 960px
+$header-height: 100px
+
+.grid
+  margin: 0 auto
+  max-width: $page-width
+
+.site-header
+  @extend .grid
+  height: $header-height
+
+.site-header__logo
+  +retina-replace('../images/logo-NEU-wordmark', 109px 40px)
+  float: left
+  margin: 30px 0
+.site-header__partner
+  $padding: 20px
+  +box-sizing(content-box)
+  +hide-text
+  +retina-image('../images/logo-UNH', 156px 42px)
+  +size(156px $header-height)
+  background-color: $grey-f8
+  background-position: $padding ($header-height - 42px) / 2
+  background-repeat: no-repeat
+  float: left
+  margin: 0 $padding
+  padding: 0 $padding
+  position: relative
+  &:before, &:after
+    +size(3px $header-height)
+    content: ""
+    display: block
+    position: absolute
+    top: 0
+  &:before
+    background-image: url(../images/logo-shadow-left.gif)
+    left: 0
+  &:after
+    background-image: url(../images/logo-shadow-right.gif)
+    right: 0
+
+.site-header__nav
+  @extend %gotham-bold
+  +clearfix
+  float: right
+  font-size: 15px
+  line-height: $header-height
+  list-style: none
+  margin: 0
+  margin-right: -10px
+  li
+    float: left
+    margin-left: 10px
+  a
+    color: black
+    padding: 10px
+    text-decoration: none

@@ -1,4 +1,9 @@
+.sass-cache
+.tmp
+bower_components
+docroot/_diffs/css/custom.css
 docroot/css
 docroot/images
 docroot/js
 docroot/templates
+node_modules
