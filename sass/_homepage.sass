@@ -6,7 +6,7 @@ $media-splash-mid-height: 'only screen and (max-height: 1025px)'
 .homepage-splash
   $dots-size: 100px
   background-color: $orange
-  background-image: url(/img/marquee-pattern.gif), url(/img/home-splash.png)
+  background-image: url(../images/marquee-pattern.gif), url(../images/home-splash.png)
   background-position: center center
   background-repeat: repeat, no-repeat
   background-size: $dots-size $dots-size, auto
@@ -21,18 +21,18 @@ $media-splash-mid-height: 'only screen and (max-height: 1025px)'
     height: 580px
     padding-top: 100px
   @media #{$media-sm}
-    background-image: url(/img/home-splash.png)
+    background-image: url(../images/home-splash.png)
     background-repeat: no-repeat
     background-size: cover
     height: 350px
     padding-top: 50px
 
 .homepage-splash__logo
-  +retina-replace(/img/symbol-white, 200px 148px)
+  +retina-replace('../images/symbol-white', 200px 148px)
   margin: 0 auto
   @media #{$media-sm}
     +size(100px 74px)
-    background-image: url(/img/symbol-white.png)
+    background-image: url(../images/symbol-white.png)
     background-size: 100px 74px
 
 .homepage-splash__greetings
@@ -78,7 +78,7 @@ $media-desk: 'only screen and (min-width: 1024px)'
   +position(fixed, 0px 0px 0px 0px)
   +transition(opacity 500ms ease-in-out)
   background-color: $black
-  background-image: url(/img/universe-long.jpg)
+  background-image: url(../images/universe-long.jpg)
   background-repeat: no-repeat
   background-size: cover
   color: $white
@@ -90,12 +90,12 @@ $media-desk: 'only screen and (min-width: 1024px)'
   $w: 280px
   $h: 438px
   +position(absolute, 50% 0 0 50%)
-  +retina-replace(/img/logo-partner, $w $h)
+  +retina-replace('../images/logo-partner', $w $h)
   margin-left: -($w / 2)
   margin-top: -($h / 2)
   @media #{$media-sm}
     +size(($w / 2) ($h / 2))
-    background-image: url(/img/logo-partner.png)
+    background-image: url(../images/logo-partner.png)
     background-size: ($w / 2) ($h / 2)
     margin-left: -($w / 4)
     margin-top: -($h / 4)
@@ -158,7 +158,7 @@ $media-desk: 'only screen and (min-width: 1024px)'
 .slideshow__full-bg--starfield
   @extend %ie-background-size
   background-color: $black
-  background-image: url(/img/universe-long.jpg)
+  background-image: url(../images/universe-long.jpg)
   background-size: 100%
   box-shadow: inset 0 6px 6px -2px rgba($black, .8), inset 0 -6px 6px -2px rgba($black, .4)
   @media #{$media-ipad}
@@ -179,11 +179,11 @@ $media-desk: 'only screen and (min-width: 1024px)'
 .slideshow__partner-logo
   $w: 280px
   $h: 438px
-  +retina-replace(/img/logo-partner, $w $h)
+  +retina-replace('../images/logo-partner', $w $h)
   margin: 0 auto
   @media #{$media-sm}
     +size(($w / 2) ($h / 2))
-    background-image: url(/img/logo-partner.png)
+    background-image: url(../images/logo-partner.png)
     background-size: ($w / 2) ($h / 2)
 
 // Droplet-style vertical arrow.
@@ -195,14 +195,14 @@ $media-desk: 'only screen and (min-width: 1024px)'
   width: 1px
   &:after
     +position(absolute, 100% 0 0 -3px)
-    +retina-image('../img/icon/dot-sm', 7px 7px)
+    +retina-image('../images/icon/dot-sm', 7px 7px)
     +size(7px)
     content: ""
     display: block
   @media #{$media-ipad}
     height: 80px
     &:after
-      +retina-image('../img/icon/dot-lg', 11px 11px)
+      +retina-image('../images/icon/dot-lg', 11px 11px)
       +size(11px)
       left: -5px
 
@@ -212,7 +212,7 @@ $media-desk: 'only screen and (min-width: 1024px)'
   display: none
   @media #{$media-ipad}
     &:after
-      +retina-image('../img/icon/dot-black-lg', 11px 11px)
+      +retina-image('../images/icon/dot-black-lg', 11px 11px)
     &.is-visible
       display: block
 
@@ -233,7 +233,7 @@ $media-desk: 'only screen and (min-width: 1024px)'
 
 .slideshow__curtain
   background-color: $black
-  background-image: url(/img/map-bg.png)
+  background-image: url(../images/map-bg.png)
   background-repeat: no-repeat
   background-size: cover
   min-height: 250px
@@ -241,7 +241,7 @@ $media-desk: 'only screen and (min-width: 1024px)'
     min-height: 100px
 
 .slideshow__scroller
-  +retina-replace('../img/icon/scroll-arrow-orange', 60px 60px)
+  +retina-replace('../images/icon/scroll-arrow-orange', 60px 60px)
   border-radius: 30px
   display: block
   margin-left: -30px
@@ -249,12 +249,12 @@ $media-desk: 'only screen and (min-width: 1024px)'
 
 .slideshow__curtain .slideshow__scroller
   +position(absolute, 90px 0 0 50%)
-  +retina-image('../img/icon/scroll-arrow-white', 60px 60px)
+  +retina-image('../images/icon/scroll-arrow-white', 60px 60px)
   @media #{$media-splash-mid-height}
     top: 30px
   @media #{$media-sm}
     +size(30px)
-    background-image: url('../img/icon/scroll-arrow-white.png')
+    background-image: url('../images/icon/scroll-arrow-white.png')
     background-size: 30px 30px
     margin-left: -15px
     top: 20px
@@ -429,11 +429,11 @@ $media-desk: 'only screen and (min-width: 1024px)'
     &:first-child
       border-top: 1px solid $grey-e3
   .slideshow__engineers-can__item--build
-    +retina-image('../img/icon/illy-bridge-sm', 74px 60px)
+    +retina-image('../images/icon/illy-bridge-sm', 74px 60px)
   .slideshow__engineers-can__item--cure
-    +retina-image('../img/icon/illy-cure-sm', 74px 60px)
+    +retina-image('../images/icon/illy-cure-sm', 74px 60px)
   .slideshow__engineers-can__item--send
-    +retina-image('../img/icon/illy-space-sm', 74px 60px)
+    +retina-image('../images/icon/illy-space-sm', 74px 60px)
 
 @media #{$media-ipad}
   .slideshow__engineers-can__item
@@ -445,12 +445,12 @@ $media-desk: 'only screen and (min-width: 1024px)'
     padding: 170px 40px 60px
     width: 33%
   .slideshow__engineers-can__item--build
-    +retina-image('../img/icon/illy-bridge-lg', 160px 130px)
+    +retina-image('../images/icon/illy-bridge-lg', 160px 130px)
   .slideshow__engineers-can__item--cure
-    +retina-image('../img/icon/illy-cure-lg', 160px 130px)
+    +retina-image('../images/icon/illy-cure-lg', 160px 130px)
     border-color: $grey-e3
   .slideshow__engineers-can__item--send
-    +retina-image('../img/icon/illy-space-lg', 160px 130px)
+    +retina-image('../images/icon/illy-space-lg', 160px 130px)
 
 
 // Graphical callouts  /////////////////
@@ -461,10 +461,10 @@ $media-desk: 'only screen and (min-width: 1024px)'
   margin-top: 40px
 
 .slideshow__callout-img--america
-  +retina-image(/img/map-us-sm, 260px 103px, gif)
+  +retina-image('../images/map-us-sm', 260px 103px, gif)
   height: 103px
   @media #{$media-ipad}
-    +retina-image(/img/map-us-lg, 680px 270px, gif)
+    +retina-image('../images/map-us-lg', 680px 270px, gif)
     height: 270px
     margin-top: 60px
     margin-bottom: 60px
@@ -491,9 +491,9 @@ $media-desk: 'only screen and (min-width: 1024px)'
   +size(260px 150px)
   margin-top: 0
 .slideshow__callout-img--white-dudes
-  +retina-image(/img/icons-dudes-sm, 260px 150px)
+  +retina-image('../images/icons-dudes-sm', 260px 150px)
 .slideshow__callout-img--everyone-else
-  +retina-image(/img/icons-others-sm, 260px 150px)
+  +retina-image('../images/icons-others-sm', 260px 150px)
 
 @media #{$media-ipad}
   .slideshow__break-the-mold
@@ -519,9 +519,9 @@ $media-desk: 'only screen and (min-width: 1024px)'
   .slideshow__callout-img--white-dudes, .slideshow__callout-img--everyone-else
     +size(300px 220px)
   .slideshow__callout-img--white-dudes
-    +retina-image(/img/icons-dudes-lg, 300px 220px)
+    +retina-image('../images/icons-dudes-lg', 300px 220px)
   .slideshow__callout-img--everyone-else
-    +retina-image(/img/icons-others-lg, 300px 220px)
+    +retina-image('../images/icons-others-lg', 300px 220px)
 
 
 // Pull quote  /////////////////////////
@@ -531,12 +531,12 @@ $media-desk: 'only screen and (min-width: 1024px)'
     text-align: center
 .slideshow-quote__text
   +font-sizes(30, 50)
-  +retina-image('../img/icon/quotes-sm', 30px 30px)
+  +retina-image('../images/icon/quotes-sm', 30px 30px)
   background-position: center 20px
   background-repeat: no-repeat
   padding-top: 60px
   @media #{$media-ipad}
-    +retina-image('../img/icon/quotes-lg', 60px 60px)
+    +retina-image('../images/icon/quotes-lg', 60px 60px)
     background-position: center 30px
     padding-top: 120px
 .slideshow-quote__author-name

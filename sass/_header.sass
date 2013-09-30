@@ -12,14 +12,14 @@ $header-z-index: 100
   height: $header-height
 
 .site-header__logo
-  +retina-replace('/img/logo-NEU-wordmark', 109px 40px)
+  +retina-replace('../images/logo-NEU-wordmark', 109px 40px)
   float: left
   margin: 30px 0
 .site-header__partner
   $padding: 20px
   +box-sizing(content-box)
   +hide-text
-  +retina-image('/img/logo-UNH', 156px 42px)
+  +retina-image('../images/logo-UNH', 156px 42px)
   +size(156px $header-height)
   background-color: $grey-f8
   background-position: $padding ($header-height - 42px) / 2
@@ -35,10 +35,10 @@ $header-z-index: 100
     position: absolute
     top: 0
   &:before
-    background-image: url(/img/logo-shadow-left.gif)
+    background-image: url(../images/logo-shadow-left.gif)
     left: 0
   &:after
-    background-image: url(/img/logo-shadow-right.gif)
+    background-image: url(../images/logo-shadow-right.gif)
     right: 0
 
 @media #{$media-sm}
@@ -46,7 +46,7 @@ $header-z-index: 100
     height: $header-height-sm
   .site-header__logo
     +size(133 17)
-    background-image: url(/img/logo-mobile@2x.png)
+    background-image: url(../images/logo-mobile@2x.png)
     background-size: 133px 17px
     margin: 17px 0 16px
   .site-header__partner
@@ -57,7 +57,7 @@ $header-z-index: 100
   float: right
 
 .site-header__nav__toggle
-  +retina-replace('../img/icon/hamburger', 20px 14px)
+  +retina-replace('../images/icon/hamburger', 20px 14px)
   display: none
   margin: 18px 0
   @media #{$media-sm}

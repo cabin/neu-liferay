@@ -46,7 +46,7 @@ $submit-duration: 300ms
     width: 100px
 
 .rfi__checkbox
-  +retina-image('../img/icon/checkmark-unchecked', 15px 15px)
+  +retina-image('../images/icon/checkmark-unchecked', 15px 15px)
   background-position: left top
   background-repeat: no-repeat
   background-size: 15px 15px
@@ -61,7 +61,7 @@ $submit-duration: 300ms
   @media #{$media-sm}
     width: 140px
   &.checked
-    +retina-image('../img/icon/checkmark-checked', 15px 15px)
+    +retina-image('../images/icon/checkmark-checked', 15px 15px)
   > input
     +position(absolute, 0px 0 0 0px)
     z-index: -1
@@ -81,7 +81,7 @@ $custom-select-padding: 5px
 
 .custom-select__indicator
   +position(absolute, $custom-select-padding $custom-select-padding $custom-select-padding 0)
-  +retina-image('../img/icon/custom-select-indicator', 14px 8px)
+  +retina-image('../images/icon/custom-select-indicator', 14px 8px)
   background-color: $orange
   background-repeat: no-repeat
   background-position: 6px 11px

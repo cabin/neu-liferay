@@ -1,5 +1,5 @@
 @import bower_components/neu-style/neu
-+neu
++neu('.public-wrapper')
 
 $page-width: 960px
 $header-height: 100px
@@ -91,7 +91,7 @@ p > a
 // This may end up being be specific to the project page.
 .page-title--hero
   background-color: #000
-  background-image: url(/img/universe-long.jpg)
+  background-image: url(../images/universe-long.jpg)
   background-repeat: no-repeat
   background-size: cover
   margin-top: 0
@@ -136,14 +136,14 @@ p > a
     width: 1px
     &:after
       +position(absolute, 100% 0 0 -5px)
-      +retina-image('../img/icon/dot-lg', 11px 11px)
+      +retina-image('../images/icon/dot-lg', 11px 11px)
       +size(11px)
       content: ""
       display: block
     @media #{$media-sm}
       height: 100px
       &:after
-        +retina-image('../img/icon/dot-sm', 7px 7px)
+        +retina-image('../images/icon/dot-sm', 7px 7px)
         +size(7px)
         left: -3px
 
@@ -260,11 +260,11 @@ ol.rule-list
 .partners-box
   background: $grey-f3
 .partners-box__neu
-  +retina-replace(/img/partners-neu, 59px 65px)
+  +retina-replace('../images/partners-neu', 59px 65px)
 .partners-box__plus
-  +retina-replace(/img/partners-plus, 29px 29px)
+  +retina-replace('../images/partners-plus', 29px 29px)
 .partners-box__unh
-  +retina-replace(/img/partners-unh, 230px 25px)
+  +retina-replace('../images/partners-unh', 230px 25px)
 @media only screen and (min-width: 511px)
   .partners-box
     +size(100% 150px)
@@ -292,5 +292,5 @@ ol.rule-list
 
 // On the about page. TODO: Abstract this into something reusable?
 .just-about-everything
-  +retina-replace(/img/just-about-everything, 210px 65px)
+  +retina-replace('../images/just-about-everything', 210px 65px)
   margin: 35px auto 50px
