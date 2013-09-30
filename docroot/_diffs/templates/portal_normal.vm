@@ -1,59 +1,148 @@
 <!DOCTYPE html>
 #parse ($init)
-<html class="#language("lang.dir")" dir="#language("lang.dir")" lang="$w3c_language_id">
+<html lang="en" ng-app="neu">
 <head>
-	<title>$the_title &middot; $company_name</title>
-	$theme.include($top_head_include)
+  <meta charset="utf-8">
+  <title>$the_title &middot; $company_name</title>
+  <!-- Made by Cabin <http://madebycabin.com/>. xo! -->
+
+  <link rel="shortcut icon" href="$images_folder/favicon.ico">
+  <meta name="viewport" content="width=device-width">
+
+  <!-- XXX opengraph tags -->
+
+  <!--[if lte IE 8]>
+  <link href="http://fonts.googleapis.com/css?family=Crimson+Text:400" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Crimson+Text:400italic" rel="stylesheet" type="text/css">
+  <![endif]-->
+
+  <link href="//cloud.typography.com/6026852/802862/css/fonts.css" rel="stylesheet">
+  <link href="http://fonts.googleapis.com/css?family=Crimson+Text:400,400italic" rel="stylesheet" type="text/css">
+  <script src="//use.typekit.net/dru8tic.js"></script>
+  <script>try{Typekit.load();}catch(e){}</script>
+  <!-- XXX modernizr -->
+
+  $theme.include($top_head_include)
 </head>
 
 <body class="$css_class">
 $theme.include($body_top_include)
 #if ($is_signed_in)
-	#dockbar()
+  #dockbar()
 #end
 
 <div class="public-wrapper">
-	<header class="site-header">
-		<hgroup>
-			<a href="$site_default_url"><h1 class="site-header__logo">$site_name</h1></a>
-			<h2 class="site-header__partner">A new approach to engineering with the University of New Haven</h2>
-		</hgroup>
+  <header class="site-header">
+    <div class="site-header__container">
+      <hgroup>
+        <a href="$site_default_url"><h1 class="site-header__logo">$site_name</h1></a>
+        <a href="http://www.newhaven.edu/" target="_blank">
+          <h2 class="site-header__partner">
+            A new approach to engineering at the University of New Haven
+          </h2>
+        </a>
+      </hgroup>
+      #if ($has_navigation || $is_signed_in)
+        #parse ("$full_templates_path/navigation.vm")
+      #end
+  </header>
 
-		#if ($has_navigation || $is_signed_in)
-			#parse ("$full_templates_path/navigation.vm")
-		#end
-	</header>
+  <!--[if lte IE 8]>
+  <div class="old-ie">
+    <div class="old-ie__dialog" style="text-align: center;">
+      <p>Your browser seems a bit outdated.<br>We recommend upgrading to
+      improve your experience!</p>
+      <a class="button" href="http://browsehappy.com/" target="_blank">Upgrade</a>
+      <p><a class="old-ie__ignore" ng-click="ignore()">No thanks</a></p>
+    </div>
+  </div>
+  <![endif]-->
 
-	<div id="content">
-		<h2 class="page-title">
-			<span>$the_title</span>
-		</h2>
+  <div class="page-top">[page-top content here]</div>
+  <section class="content">[standard content here]</section>
+  <div class="page-bottom">[page-bottom content here]</div>
 
-		<nav class="site-breadcrumbs" id="breadcrumbs">
-			<h1>
-				<span>#language("breadcrumbs")</span>
-			</h1>
+  <!-- XXX
+  <div id="content">
+    <h2 class="page-title">
+      <span>$the_title</span>
+    </h2>
 
-			#breadcrumbs()
-		</nav>
+    <nav class="site-breadcrumbs" id="breadcrumbs">
+      <h1>
+        <span>#language("breadcrumbs")</span>
+      </h1>
 
-		#if ($selectable)
-			$theme.include($content_include)
-		#else
-			$portletDisplay.recycle()
+      #breadcrumbs()
+    </nav>
 
-			$portletDisplay.setTitle($the_title)
+    #if ($selectable)
+      $theme.include($content_include)
+    #else
+      $portletDisplay.recycle()
 
-			$theme.wrapPortlet("portlet.vm", $content_include)
-		#end
-	</div>
+      $portletDisplay.setTitle($the_title)
 
-	<footer id="footer" role="contentinfo">
-		#if (!$is_signed_in)
-			<!-- TODO: move to footer -->
-			<a href="$sign_in_url" id="sign-in" rel="nofollow">$sign_in_text</a>
-		#end
-	</footer>
+      $theme.wrapPortlet("portlet.vm", $content_include)
+    #end
+  </div>
+
+  <footer id="footer" role="contentinfo">
+    #if (!$is_signed_in)
+      <a href="$sign_in_url" id="sign-in" rel="nofollow">$sign_in_text</a>
+    #end
+  </footer>
+  -->
+
+  <footer id="contact" class="site-footer">
+    <div class="site-footer__bg">
+      [include RFI content here]
+      <div class="grid-container">
+        <div class="site-footer__contact">
+          <div class="col-l site-footer__chunk">
+            <div class="site-footer__subhead">NEU Headquarters</div>
+
+            <div class="col-s">
+              <a href="https://www.google.com/maps?q=395+Page+Mill+Rd,+94306" target="_blank">
+                395 Page Mill Road, 3rd Floor<br>
+                Palo Alto, CA 94306
+              </a>
+            </div>
+
+            <table class="col-s omega">
+              <tr>
+                <td>Email:</td>
+                <td><a href="mailto:frontdesk@neu.me">frontdesk@neu.me</a></td>
+              </tr><tr>
+                <td>Phone:</td>
+                <td>(855) 638-6398</td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="col-s site-footer__chunk omega">
+            <div class="site-footer__subhead">In the Wild</div>
+
+            <a href="https://www.facebook.com/pages/NEU-New-Engineering-University/577097745688022"
+              target="_blank" class="share-icon share-icon--facebook">Facebook</a>
+            <a href="https://twitter.com/spreadthelogic"
+              target="_blank" class="share-icon share-icon--twitter">Twitter</a>
+            <a href="http://instagram.com/spreadthelogic/"
+              target="_blank" class="share-icon share-icon--instagram">Instagram</a>
+            <a href="https://plus.google.com/101741858749215450388/posts"
+              target="_blank" class="share-icon share-icon--google">Google+</a>
+            <a href="http://www.linkedin.com/company/neu-new-engineering-university"
+              target="_blank" class="share-icon share-icon--linkedin omega">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-footer__copyright">
+      &copy;2013 New Engineering University, Inc.
+    </div>
+  </footer>
+
 </div>
 
 $theme.include($body_bottom_include)

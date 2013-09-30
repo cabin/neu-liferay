@@ -1,13 +1,20 @@
-<nav>
-	<ul class="site-header__nav">
-		#foreach ($nav_item in $nav_items)
-			#if ($nav_item.isSelected())
-				<li class="selected">
-			#else
-				<li>
-			#end
-				<a href="$nav_item.getURL()" $nav_item.getTarget()>$nav_item.getName()</a>
-			</li>
-		#end
-	</ul>
+<nav class="site-header__nav" ng-cloak neu-mobile-nav>
+  <a class="site-header__nav__toggle" ng-click="toggleMenu()"></a>
+  <ul class="nav-list" ng-class="{'nav-list--mobile': isMobile}" ng-show="menuOpen">
+    #foreach ($nav_item in $nav_items)
+      #if ($nav_item.isSelected())
+        <li class="is-selected">
+      #else
+        <li>
+      #end
+        <a href="$nav_item.getURL()">
+          <hr class="nav-list__indicator">
+          #if ($nav_item.getName() == "Program")
+            <span class="nav-list__beta">Beta</span>
+          #end
+          $nav_item.getName()
+        </a>
+      </li>
+    #end
+  </ul>
 </nav>
