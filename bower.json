@@ -2,6 +2,8 @@
   "name": "neu-liferay-theme",
   "version": "0.0.1",
   "dependencies": {
-    "neu-style": "/Users/zakj/src/cabin/neu/style"
+    "cabin-utils": "git@github.com:cabin/utils.git#0.0.3",
+    "neu-style": "git@github.com:cabin/neu-style.git#master",
+    "greensock-js": "1.10.2"
   }
 }
