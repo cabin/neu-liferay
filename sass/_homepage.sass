@@ -1,0 +1,563 @@
+// NOTE: Here there be dragons. This was cobbled together from the Phase 0 site
+// in a hurry, and could use a stylistic refactor.
+
+$media-splash-mid-height: 'only screen and (max-height: 1025px)'
+
+.homepage-splash
+  $dots-size: 100px
+  background-color: $orange
+  background-image: url(/img/marquee-pattern.gif), url(/img/home-splash.png)
+  background-position: center center
+  background-repeat: repeat, no-repeat
+  background-size: $dots-size $dots-size, auto
+  color: $white
+  height: 830px
+  margin-bottom: 1px
+  padding-top: 125px
+  text-align: center
+  +hidpi(2)
+    background-size: ($dots-size / 2) ($dots-size / 2), auto
+  @media #{$media-splash-mid-height}
+    height: 580px
+    padding-top: 100px
+  @media #{$media-sm}
+    background-image: url(/img/home-splash.png)
+    background-repeat: no-repeat
+    background-size: cover
+    height: 350px
+    padding-top: 50px
+
+.homepage-splash__logo
+  +retina-replace(/img/symbol-white, 200px 148px)
+  margin: 0 auto
+  @media #{$media-sm}
+    +size(100px 74px)
+    background-image: url(/img/symbol-white.png)
+    background-size: 100px 74px
+
+.homepage-splash__greetings
+  @extend .heading
+  margin-top: 50px
+  @media #{$media-sm}
+    margin-top: 20px
+
+.homepage-splash__shuffle
+  @extend %alt-gothic
+  margin-top: 30px
+  // Before +font-size() to allow the mobile size to win when appropriate.
+  @media #{$media-splash-mid-height}
+    margin-top: 20px
+    font-size: 160px
+  +font-size(200px, 70px)
+  @media #{$media-sm}
+    margin-top: 10px
+
+
+// NOTE: These media queries are for the slideshow only; if the slideshow
+// sticks around, it would be worthwhile to port it over to the new
+// breakpoints.
+$media-small: 'only screen and (max-width: 767px)'
+$media-small-ipad: 'only screen and (max-width: 1023px)'
+$media-ipad: 'only screen and (min-width: 768px)'
+$media-desk: 'only screen and (min-width: 1024px)'
+
+// NOTE: This is similar to the global `font-size` mixin, but with big/small
+// argument order reversed and using the slideshow-only media queries.
+=font-sizes($small, $big: '')
+  @if unitless($small)
+    $small: $small * 1px
+  font-size: $small
+  @if $big != ''
+    @media #{$media-ipad}
+      @if unitless($big)
+        $big: $big * 1px
+      font-size: $big
+
+
+.partner-overlay
+  +position(fixed, 0px 0px 0px 0px)
+  +transition(opacity 500ms ease-in-out)
+  background-color: $black
+  background-image: url(/img/universe-long.jpg)
+  background-repeat: no-repeat
+  background-size: cover
+  color: $white
+  display: none
+  z-index: 300
+.partner-overlay--visible
+  display: block
+.partner-overlay__logo
+  $w: 280px
+  $h: 438px
+  +position(absolute, 50% 0 0 50%)
+  +retina-replace(/img/logo-partner, $w $h)
+  margin-left: -($w / 2)
+  margin-top: -($h / 2)
+  @media #{$media-sm}
+    +size(($w / 2) ($h / 2))
+    background-image: url(/img/logo-partner.png)
+    background-size: ($w / 2) ($h / 2)
+    margin-left: -($w / 4)
+    margin-top: -($h / 4)
+
+.partner-overlay-hide
+  opacity: 1
+  display: block
+.partner-overlay-hide.partner-overlay-hide-active
+  opacity: 0
+
+
+// Phase 0 layout styles  //////////////
+
+// Main content, centered on the page with a max width.
+.slideshow__l-main
+  display: block
+  margin: 0 auto
+  max-width: 960px
+  padding-left: 25px
+  padding-right: 25px
+  @media #{$media-ipad}
+    padding-left: 40px
+    padding-right: 40px
+
+// Vertically-padded content blocks.
+.slideshow__l-pad
+  padding-top: 60px
+  padding-bottom: 60px
+  @media #{$media-ipad}
+    padding-top: 60px
+    padding-bottom: 90px
+
+@media #{$media-ipad}
+  .slideshow__l-pad--double
+    padding-top: 120px
+    padding-bottom: 160px
+
+  .slideshow__l-pad--huge
+    padding: 200px 0
+
+  .slideshow__l-pad--mega
+    padding: 150px 0 300px
+
+
+// Phase 0 common styles  //////////////
+
+// Stretch a darker background color to fill the viewport width.
+.slideshow__full-bg
+  color: $white
+.slideshow__full-bg--black
+  background-color: $black
+.slideshow__full-bg--orange
+  background-color: $orange
+.slideshow__full-bg--grey
+  background-color: $grey-f3
+  color: $black
+.slideshow__full-bg--white
+  background-color: $white
+  color: $black
+.slideshow__full-bg--starfield
+  @extend %ie-background-size
+  background-color: $black
+  background-image: url(/img/universe-long.jpg)
+  background-size: 100%
+  box-shadow: inset 0 6px 6px -2px rgba($black, .8), inset 0 -6px 6px -2px rgba($black, .4)
+  @media #{$media-ipad}
+    height: 1400px
+    .slideshow__callout:first-child
+      margin-top: 200px
+      margin-bottom: 200px
+    .no-touch &
+      background-attachment: fixed
+      background-size: cover
+  @media #{$media-sm}
+    .slideshow__callout:first-child
+      margin-bottom: 40px
+
+.slideshow__eat-footer-margin
+  margin-bottom: -$footer-margin
+
+.slideshow__partner-logo
+  $w: 280px
+  $h: 438px
+  +retina-replace(/img/logo-partner, $w $h)
+  margin: 0 auto
+  @media #{$media-sm}
+    +size(($w / 2) ($h / 2))
+    background-image: url(/img/logo-partner.png)
+    background-size: ($w / 2) ($h / 2)
+
+// Droplet-style vertical arrow.
+.slideshow__drip
+  background: $orange
+  height: 50px
+  margin: 20px auto
+  position: relative
+  width: 1px
+  &:after
+    +position(absolute, 100% 0 0 -3px)
+    +retina-image('../img/icon/dot-sm', 7px 7px)
+    +size(7px)
+    content: ""
+    display: block
+  @media #{$media-ipad}
+    height: 80px
+    &:after
+      +retina-image('../img/icon/dot-lg', 11px 11px)
+      +size(11px)
+      left: -5px
+
+.slideshow__drip--scroll-hint
+  +position(absolute, -100px 0 0 50%)
+  background: $black
+  display: none
+  @media #{$media-ipad}
+    &:after
+      +retina-image('../img/icon/dot-black-lg', 11px 11px)
+    &.is-visible
+      display: block
+
+// Use <span class="wbr"/> for text that should be on its own line on mobile,
+// or .wbr--big for text for >mobile.
+@media #{$media-small}
+  .wbr
+    display: block
+@media #{$media-ipad}
+  .wbr--big
+    display: block
+
+
+// Slideshow management  ///////////////
+
+.slideshow-preload
+  position: relative
+
+.slideshow__curtain
+  background-color: $black
+  background-image: url(/img/map-bg.png)
+  background-repeat: no-repeat
+  background-size: cover
+  min-height: 250px
+  @media #{$media-sm-md}
+    min-height: 100px
+
+.slideshow__scroller
+  +retina-replace('../img/icon/scroll-arrow-orange', 60px 60px)
+  border-radius: 30px
+  display: block
+  margin-left: -30px
+  z-index: 30
+
+.slideshow__curtain .slideshow__scroller
+  +position(absolute, 90px 0 0 50%)
+  +retina-image('../img/icon/scroll-arrow-white', 60px 60px)
+  @media #{$media-splash-mid-height}
+    top: 30px
+  @media #{$media-sm}
+    +size(30px)
+    background-image: url('../img/icon/scroll-arrow-white.png')
+    background-size: 30px 30px
+    margin-left: -15px
+    top: 20px
+
+.slideshow__scroller--slideshow
+  +position(absolute, 0 0 90px 50%)
+
+
+@media #{$media-small}
+  #slideshow
+    padding-top: 40px
+  .slideshow__slide
+    margin-bottom: 40px
+    &:last-child
+      margin-bottom: 0
+  .slideshow__slide--with-rule
+    &:before
+      background: $grey-e3
+      content: ""
+      display: block
+      height: 1px
+      margin: 0 auto 40px
+      width: 75px
+
+@media #{$media-ipad}
+  // Vertical centering.
+  .slideshow__slide
+    display: table
+    height: 600px
+    text-align: center
+    width: 100%
+    > div
+      display: table-cell
+      vertical-align: middle
+  .slideshow__slide--white
+    background: $white
+    border-bottom: 1px solid $grey-e3
+    &:last-child
+      border-width: 0 !important
+
+  // This class is only added if the slideshow is available.
+  .slideshow
+    overflow: hidden
+    position: relative
+
+    .slideshow__curtain
+      +position(absolute, 0px 0px 0 0px)
+      z-index: 20
+
+    .slideshow__slides
+      position: absolute
+      width: 100%
+      top: 0
+
+    .slideshow__slide
+      +position(absolute, 0px 0px 0 0px)
+      display: block  // override table
+      height: 100%
+      margin: 0
+      overflow: hidden
+      padding: 0
+      // Vertical centering.
+      > div
+        display: block  // override table-cell
+        position: relative
+        top: 50%
+      &:first-child
+        background-color: $grey-f3
+
+    .slideshow__slide--white
+      border-left: 2px solid $grey-e3
+
+
+// Callouts  ///////////////////////////
+
+.slideshow__callout
+  @extend %gotham-bold
+  +font-sizes(15, 30)
+  margin-top: 40px
+  text-align: center
+  &:first-child
+    margin-top: 0
+  .slideshow__whisper
+    +font-sizes(15, 30)
+    color: $orange
+    padding-bottom: 5px
+    text-transform: none
+
+.slideshow__callout em
+  +font-sizes(30, 60)
+  color: $orange
+  display: block
+  font-style: normal
+  line-height: 1
+  margin-top: 5px
+  @media #{$media-ipad}
+    &.slideshow__callout__huge
+      font-size: 80px
+
+.slideshow__callout s
+  text-decoration: none
+  position: relative
+  &:before
+    +position(absolute, 45% -5px 0 -5px)
+    +transform(rotate(-3.7deg))
+    background-color: $orange
+    content: ""
+    height: 2px
+    opacity: .9
+    // This improves rendering on Chrome/Safari, but has the opposite effect
+    // on Mobile Safari; rely on touch detection for now.
+    .no-touch &
+      +backface-visibility(hidden)
+  @media #{$media-ipad}
+    &:before
+      height: 3px
+      left: -10px
+      right: -10px
+
+.slideshow__callout--tight
+  margin-top: 0
+
+.slideshow__callout--semi-tight
+  margin-top: 15px
+
+.slideshow__callout--big
+  +font-sizes(24, 48)
+
+.slideshow__callout--huge
+  +font-sizes(30, 80)
+
+.slideshow__callout--year
+  +font-sizes(12, 18)
+  margin-top: 0
+
+.slideshow__callout--small
+  +font-sizes(15, 18)
+
+.slideshow__whisper
+  @extend %crimson
+  +font-sizes(18, 24)
+  font-style: italic
+  text-align: center
+  a
+    @extend %padded-underline
+
+
+// Things engineers do  ////////////////
+
+.slideshow__callout.slideshow__engineers-can
+  +font-sizes(24, 30)
+
+.slideshow__engineers-can ul
+  +clearfix
+  list-style: none
+  padding: 0
+
+.slideshow__engineers-can__item
+  +font-sizes(15, 18)
+  background-repeat: no-repeat
+
+@media #{$media-small}
+  .slideshow__engineers-can__item
+    background-position: 20px 10px
+    border-bottom: 1px solid $grey-e3
+    height: 80px
+    padding: 20px 0 10px
+    padding-left: 120px
+    text-align: left
+    width: 270px
+    margin: 0 auto
+    &:first-child
+      border-top: 1px solid $grey-e3
+  .slideshow__engineers-can__item--build
+    +retina-image('../img/icon/illy-bridge-sm', 74px 60px)
+  .slideshow__engineers-can__item--cure
+    +retina-image('../img/icon/illy-cure-sm', 74px 60px)
+  .slideshow__engineers-can__item--send
+    +retina-image('../img/icon/illy-space-sm', 74px 60px)
+
+@media #{$media-ipad}
+  .slideshow__engineers-can__item
+    background-position: center 20px
+    border-bottom: 1px solid transparent
+    display: inline-block
+    float: left
+    margin-bottom: 30px
+    padding: 170px 40px 60px
+    width: 33%
+  .slideshow__engineers-can__item--build
+    +retina-image('../img/icon/illy-bridge-lg', 160px 130px)
+  .slideshow__engineers-can__item--cure
+    +retina-image('../img/icon/illy-cure-lg', 160px 130px)
+    border-color: $grey-e3
+  .slideshow__engineers-can__item--send
+    +retina-image('../img/icon/illy-space-lg', 160px 130px)
+
+
+// Graphical callouts  /////////////////
+
+.slideshow__callout-img
+  background-repeat: no-repeat
+  background-position: center center
+  margin-top: 40px
+
+.slideshow__callout-img--america
+  +retina-image(/img/map-us-sm, 260px 103px, gif)
+  height: 103px
+  @media #{$media-ipad}
+    +retina-image(/img/map-us-lg, 680px 270px, gif)
+    height: 270px
+    margin-top: 60px
+    margin-bottom: 60px
+
+.slideshow__break-the-mold
+  float: left
+  @media #{$media-small}
+    width: 100%
+    > .slideshow__callout, > .slideshow__callout-img
+      margin: 30px auto 20px
+
+@media #{$media-small}
+  .slideshow__break-the-mold--right
+    margin-top: 20px
+    &:before
+      background: $grey-e3
+      content: ""
+      display: block
+      height: 1px
+      margin: 0 auto
+      width: 75px
+
+.slideshow__callout-img--white-dudes, .slideshow__callout-img--everyone-else
+  +size(260px 150px)
+  margin-top: 0
+.slideshow__callout-img--white-dudes
+  +retina-image(/img/icons-dudes-sm, 260px 150px)
+.slideshow__callout-img--everyone-else
+  +retina-image(/img/icons-others-sm, 260px 150px)
+
+@media #{$media-ipad}
+  .slideshow__break-the-mold
+    +clearfix
+    width: 50%
+    position: relative
+    > .slideshow__callout
+      +position(absolute, 0 0 0px 0)
+      width: 220px
+    > .slideshow__callout-img
+      margin: 40px auto 80px
+  .slideshow__break-the-mold--left
+    > .slideshow__callout, .slideshow__callout-img
+      margin-right: 20px
+      float: right
+      right: 0
+  .slideshow__break-the-mold--right
+    > .slideshow__callout, .slideshow__callout-img
+      margin-left: 20px
+      float: left
+      left: 0
+
+  .slideshow__callout-img--white-dudes, .slideshow__callout-img--everyone-else
+    +size(300px 220px)
+  .slideshow__callout-img--white-dudes
+    +retina-image(/img/icons-dudes-lg, 300px 220px)
+  .slideshow__callout-img--everyone-else
+    +retina-image(/img/icons-others-lg, 300px 220px)
+
+
+// Pull quote  /////////////////////////
+
+.slideshow-quote
+  @media #{$media-ipad}
+    text-align: center
+.slideshow-quote__text
+  +font-sizes(30, 50)
+  +retina-image('../img/icon/quotes-sm', 30px 30px)
+  background-position: center 20px
+  background-repeat: no-repeat
+  padding-top: 60px
+  @media #{$media-ipad}
+    +retina-image('../img/icon/quotes-lg', 60px 60px)
+    background-position: center 30px
+    padding-top: 120px
+.slideshow-quote__author-name
+  +font-sizes(18, 24)
+  border-top: 1px solid rgba($white, .3)
+  margin: 40px 0 10px
+  padding-top: 8px
+  text-align: center
+  text-transform: uppercase
+  @media #{$media-ipad}
+    margin: 80px 0 20px
+    padding-top: 20px
+.slideshow-quote__author-title
+  @extend %gotham-bold
+  +font-sizes(10)
+  line-height: 1.1
+  opacity: .6
+  text-align: center
+  em
+    @extend %crimson
+    font-size: 11px
+    font-style: italic
+    line-height: 2
+    text-transform: none

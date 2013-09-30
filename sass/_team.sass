@@ -1,0 +1,65 @@
+// Compute the necessary window width to display $n team members. Take the
+// container width for $n members, remove 40px for the left-most member's left
+// margin, and add 30px each side for page padding.
+@function outer-width-for-n-members($n)
+  @return width-for-n-members($n) + 30px * 2 - 40px
+// Compute the necessary container width for $n team members.
+@function width-for-n-members($n)
+  @return (210px + 40px) * $n
+
+.team
+  margin-left: -40px
+  > hr
+    background: $grey-e3
+    border: none
+    height: 1px
+    margin-bottom: 50px
+    margin-left: 40px
+
+.team__container
+  +clearfix
+  margin: 0 auto
+  @media only screen and (max-width: #{outer-width-for-n-members(4) - 1})
+    width: width-for-n-members(3)
+  @media only screen and (max-width: #{outer-width-for-n-members(3) - 1})
+    width: width-for-n-members(2)
+  @media only screen and (max-width: #{outer-width-for-n-members(2) - 1})
+    width: width-for-n-members(1)
+
+.team__member
+  float: left
+  height: 200px
+  margin-left: 40px
+  text-align: center
+  width: 210px
+  img
+    margin-bottom: 10px
+  > a
+    color: inherit
+
+.team__member--solo
+  float: none
+  margin-left: auto
+  margin-right: auto
+  max-width: grid-width(2)
+  width: 100%
+  height: auto
+  margin-bottom: 50px
+  margin-top: -20px
+
+.team__link
+  &:hover .team__img
+    +retina-image('../img/icon/team-ring', 88px 88px)
+
+.team__img
+  +size(80px + 8px)
+  padding: 4px
+
+.partners
+  background-color: $tan
+  box-shadow: inset 0 3px 4px -2px rgba($black, .4)
+  padding: 40px 0
+  margin-bottom: -$footer-margin
+  > .heading
+    text-align: center
+    color: $grey-93

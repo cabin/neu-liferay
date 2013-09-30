@@ -1,0 +1,40 @@
+// Provides layout-only styles; general layout classes here should be prefixed
+// with `l-` to keep them distinct in the markup.
+
+// A simple grid system.
+$grid-gutter: 32px
+
+// [1]: inline-block provides better results than floating grid items, except
+// that it doesn't consume whitespace between tags. Setting font-size to 0 on
+// grid containers (and subsequently resetting it on grid items) is a
+// reasonable workaround.
+
+// A row of grid items.
+.grid
+  +clearfix
+  font-size: 0  // [1]
+  margin-left: -$grid-gutter
+
+.grid__item
+  +box-sizing(border-box)
+  display: inline-block
+  font-size: 16px  // [1]
+  padding-left: $grid-gutter
+  vertical-align: top
+
+@mixin width($span: $columns of $total)
+  @if length($span) < 3
+    width: 100%
+  @else
+    $columns: nth($span, 1)
+    $total: nth($span, 3)
+    @if $columns >= $total
+      width: 100%
+    @else
+      width: percentage($columns / $total)
+
+
+// A centered block element.
+.l-centered
+  display: block
+  margin: 0 auto

@@ -1,0 +1,171 @@
+$header-z-index: 100
+
+.site-header
+  +position(relative, 0px 0px 0 0px)  // JS will convert to fixed
+  background: $white
+  // XXX IE fallback?
+  box-shadow: 0 1px 2px 0 rgba($black, .2)
+  z-index: $header-z-index
+
+.site-header__container
+  @extend .grid-container
+  height: $header-height
+
+.site-header__logo
+  +retina-replace('/img/logo-NEU-wordmark', 109px 40px)
+  float: left
+  margin: 30px 0
+.site-header__partner
+  $padding: 20px
+  +box-sizing(content-box)
+  +hide-text
+  +retina-image('/img/logo-UNH', 156px 42px)
+  +size(156px $header-height)
+  background-color: $grey-f8
+  background-position: $padding ($header-height - 42px) / 2
+  background-repeat: no-repeat
+  float: left
+  margin: 0 30px
+  padding: 0 $padding
+  position: relative
+  &:before, &:after
+    +size(3px $header-height)
+    content: ""
+    display: block
+    position: absolute
+    top: 0
+  &:before
+    background-image: url(/img/logo-shadow-left.gif)
+    left: 0
+  &:after
+    background-image: url(/img/logo-shadow-right.gif)
+    right: 0
+
+@media #{$media-sm}
+  .site-header__container
+    height: $header-height-sm
+  .site-header__logo
+    +size(133 17)
+    background-image: url(/img/logo-mobile@2x.png)
+    background-size: 133px 17px
+    margin: 17px 0 16px
+  .site-header__partner
+    display: none
+
+.site-header__nav
+  +clearfix
+  float: right
+
+.site-header__nav__toggle
+  +retina-replace('../img/icon/hamburger', 20px 14px)
+  display: none
+  margin: 18px 0
+  @media #{$media-sm}
+    display: block
+
+.nav-list
+  @extend %gotham-bold
+  font-size: $nav-font-size
+  line-height: $header-height
+  list-style: none
+  margin: 0
+  margin-right: -10px
+  li
+    float: left
+    margin-left: 10px
+    position: relative
+  a
+    color: black
+    padding: 10px
+    text-decoration: none
+  @media #{$media-sm}
+    display: none
+
+.nav-list__beta
+  +position(absolute, 31px 0 0 10px)
+  color: $orange
+  font-size: 10px
+  line-height: 1
+
+.nav-list__indicator
+  +position(absolute, 0px 10px 0 10px)
+  display: none
+  border: none
+  height: 3px
+  margin: 0
+.no-touch .nav-list a:hover .nav-list__indicator
+  background: $grey-e3
+  display: block
+.nav-list .is-selected .nav-list__indicator
+  // !important to prevent the hover style from winning.
+  background: $orange !important
+  display: block
+
+// Using a class rather than a MQ in order to use @extend.
+.nav-list.nav-list--mobile
+  +position(fixed, $header-height-sm 0px 0px 0px)
+  background: $blue-dark
+  z-index: 300
+  margin-right: 0
+  padding-left: 0
+  li
+    float: none
+    padding: 0
+    margin: 0
+  a
+    @extend %alt-gothic
+    @extend .grid-container
+    background: $orange
+    border-bottom: 1px solid $white
+    color: $white
+    display: block
+    font-size: 60px
+    line-height: 100px
+    padding-top: 10px
+
+@media #{$media-sm}
+  .nav-list.nav-list--mobile
+    display: block
+  .nav-list__beta,
+  .nav-list__indicator
+    display: none !important
+
+
+.subnav
+  background: $black
+  color: $white
+  line-height: $subnav-height
+
+.subnav__list
+  @extend %gotham-bold
+  @extend .grid-container
+  +font-size($nav-font-size, 10)
+  list-style: none
+  margin: 0 auto
+
+.subnav__item
+  float: left
+  margin-left: 30px
+  &:first-child
+    margin-left: 0
+  &.is-selected, a:hover
+    color: $orange
+  a
+    color: inherit
+    text-decoration: none
+
+.subnav__item--note
+  color: $grey-93
+  margin-left: 10px
+  &:before
+    content: "»"
+    display: inline-block
+    margin-right: 10px
+
+@media #{$media-sm}
+  .subnav
+    line-height: $subnav-height-sm
+  .subnav__item
+    margin-left: 15px
+  .subnav__item--note
+    display: none

@@ -1,0 +1,62 @@
+// Global variables, mixins, and placeholders; nothing in this file should emit
+// any actual styles, since it may be imported by multiple files in the
+// compilation chain.
+
+// Make Bourbon available everywhere.
+@import bourbon/app/assets/stylesheets/bourbon
+
+
+// Standard colors.
+$black: #232323
+$white: #ffffff
+$orange: #ff6138
+$grey-bg: #f3f3f3
+$grey-rule: #e3e3e3
+$grey-text: #636363
+
+// Breakpoints.
+$media-small: 'only screen and (max-width: 767px)'
+$media-small-ipad: 'only screen and (max-width: 1023px)'
+$media-ipad: 'only screen and (min-width: 768px)'
+$media-desk: 'only screen and (min-width: 1024px)'
+
+
+// Standard-ish font styling.
+%text--header
+  @extend %text--thinner
+  font-family: ProximaNova, $helvetica
+  font-weight: bold
+  letter-spacing: 1px
+  text-transform: uppercase
+  @media #{$media-ipad}
+    letter-spacing: 2px
+
+%text--body
+  font-family: 'Crimson Text', $georgia
+  font-weight: normal
+
+%text--thinner
+  -webkit-font-smoothing: antialiased
+
+@mixin font-sizes($small, $big: '')
+  @if unitless($small)
+    $small: $small * 1px
+  font-size: $small
+  @if $big != ''
+    @media #{$media-ipad}
+      @if unitless($big)
+        $big: $big * 1px
+      font-size: $big
+
+@mixin font-header($small, $big: '')
+  @extend %text--header
+  +font-sizes($small, $big)
+
+@mixin font-body($small, $big)
+  @extend %text--body
+  +font-sizes($small, $big)
+
+
+// IE6-8 shim for background-size: {contain,cover}.
+%ie-background-size
+  -ms-behavior: url(/ie/backgroundsize.min.htc)
