@@ -5,7 +5,7 @@ module.exports = (grunt) ->
     pkg: pkg
     path:
       sass: 'sass'
-      fonts: 'fonts'
+      coffee: 'js'
       build: '.tmp'
       diffs: 'docroot/_diffs'
       components: 'bower_components'
@@ -18,10 +18,34 @@ module.exports = (grunt) ->
         ext: '.css'
       options:
         loadPath: '<%= path.components %>'
+    coffee:
+      build:
+        expand: true
+        src: ['<%= path.coffee %>/**/*.coffee']
+        dest: '<%= path.build %>'
+        ext: '.js'
     concat:
       build:
-        src: ['<%= path.build %>/<%= path.sass %>/**/*.css']
-        dest: '<%= path.diffs %>/css/custom.css'
+        files: [
+          src: ['<%= path.build %>/<%= path.sass %>/**/*.css']
+          dest: '<%= path.diffs %>/css/custom.css'
+        ,
+          src: ['<%= path.build %>/<%= path.coffee %>/**/*.js']
+          dest: '<%= path.diffs %>/js/neu.js'
+        ,
+          src: [
+            '<%= path.components %>/angular-1.1.x/angular.js'
+            '<%= path.components %>/angular-1.1.x/angular-mobile.js'
+            '<%= path.components %>/cabin-utils/dist/preload.js'
+            '<%= path.components %>/cabin-utils/dist/isRetina.js'
+            '<%= path.components %>/cabin-utils/dist/at2x.js'
+            '<%= path.components %>/greensock-js/src/uncompressed/TweenLite.js'
+            '<%= path.components %>/greensock-js/src/uncompressed/TimelineLite.js'
+            '<%= path.components %>/greensock-js/src/uncompressed/plugins/CSSPlugin.js'
+            '<%= path.components %>/greensock-js/src/uncompressed/plugins/ScrollToPlugin.js'
+          ]
+          dest: '<%= path.diffs %>/js/vendor.js'
+        ]
 
     watch:
       sass:
@@ -34,6 +58,7 @@ module.exports = (grunt) ->
 
   grunt.registerTask('deploy', 'Compile and deploy to Liferay', [
     'sass'
+    'coffee'
     'concat'
     'antDeploy'
   ])

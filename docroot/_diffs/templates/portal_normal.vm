@@ -145,6 +145,8 @@ $theme.include($body_top_include)
 
 </div>
 
+<script src="$javascript_folder/vendor.js"></script>
+<script src="$javascript_folder/neu.js"></script>
 $theme.include($body_bottom_include)
 </body>
 $theme.include($bottom_include)
