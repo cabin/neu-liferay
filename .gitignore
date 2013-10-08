@@ -2,6 +2,8 @@
 .tmp
 bower_components
 docroot/_diffs/css/custom.css
+docroot/_diffs/js/neu.js
+docroot/_diffs/js/vendor.js
 docroot/css
 docroot/images
 docroot/js
