@@ -56,12 +56,15 @@ module.exports = (grunt) ->
   for dep of pkg.devDependencies when dep.indexOf('grunt-') is 0
     grunt.loadNpmTasks(dep)
 
-  grunt.registerTask('deploy', 'Compile and deploy to Liferay', [
+  grunt.registerTask('build', [
     'sass'
     'coffee'
     'concat'
-    'antDeploy'
   ])
   grunt.registerTask 'antDeploy', 'Run "ant deploy"', ->
     grunt.util.spawn({cmd: 'ant', args: ['deploy']}, @async())
+  grunt.registerTask('deploy', 'Compile and deploy to Liferay', [
+    'build'
+    'antDeploy'
+  ])
   grunt.registerTask('dev', 'Deploy on file changes', ['deploy', 'watch'])
