@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 #parse ($init)
 <html lang="en" ng-app="neu">
@@ -23,13 +24,16 @@
   <!-- XXX modernizr -->
 
   $theme.include($top_head_include)
+
 </head>
 
 <body class="$css_class">
 $theme.include($body_top_include)
 #if ($is_signed_in)
   #dockbar()
+  <div> </div>
 #end
+
 
 <div class="public-wrapper">
   <header class="site-header">
@@ -45,6 +49,7 @@ $theme.include($body_top_include)
       #if ($has_navigation || $is_signed_in)
         #parse ("$full_templates_path/navigation.vm")
       #end
+	
   </header>
 
   <!--[if lte IE 8]>
@@ -58,9 +63,21 @@ $theme.include($body_top_include)
   </div>
   <![endif]-->
 
-  <div class="page-top">[page-top content here]</div>
-  <section class="content">[standard content here]</section>
-  <div class="page-bottom">[page-bottom content here]</div>
+  <div class="page-top">$theme.include($body_top_include)
+</div>
+
+  <section class="content">
+                #if ($selectable)
+                        $theme.include($content_include)
+                #else
+                     	$portletDisplay.recycle()
+
+                        $portletDisplay.setTitle($the_title)
+
+                        $theme.wrapPortlet("portlet.vm", $content_include)
+                #end
+  </section>
+  <div class="page-bottom">$theme.include($body_bottom_include)</div>
 
   <!-- XXX
   <div id="content">
@@ -93,10 +110,9 @@ $theme.include($body_top_include)
     #end
   </footer>
   -->
-
   <footer id="contact" class="site-footer">
-    <div class="site-footer__bg">
-      [include RFI content here]
+    <div class="site-footer__bg" id="column-1">
+     $theme.runtime("rfiportlet_WAR_rfiportlet") 
       <div class="grid-container">
         <div class="site-footer__contact">
           <div class="col-l site-footer__chunk">
