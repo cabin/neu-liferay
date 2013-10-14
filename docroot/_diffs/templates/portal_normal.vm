@@ -27,7 +27,7 @@
   <link href="http://fonts.googleapis.com/css?family=Crimson+Text:400,400italic" rel="stylesheet" type="text/css">
   <script src="//use.typekit.net/dru8tic.js"></script>
   <script>try{Typekit.load();}catch(e){}</script>
-  <!-- XXX modernizr -->
+  <script src="$javascript_folder/modernizr.js"></script>
 
   $theme.include($top_head_include)
 
