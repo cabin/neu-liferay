@@ -1,16 +1,22 @@
-
 <!DOCTYPE html>
 #parse ($init)
 <html lang="en" ng-app="neu">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>$the_title &middot; $company_name</title>
   <!-- Made by Cabin <http://madebycabin.com/>. xo! -->
 
   <link rel="shortcut icon" href="$images_folder/favicon.ico">
   <meta name="viewport" content="width=device-width">
 
-  <!-- XXX opengraph tags -->
+  <meta property="og:title" content="New Engineering University">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="http://neu.me/img/mark-1500.png">
+  <meta property="og:url" content="http://neu.me/">
+  <meta property="og:site_name" content="NEU">
+  <meta property="og:description" content="A new breed of university for a new breed of engineer.">
+  <meta name="description" content="A new breed of university for a new breed of engineer.">
 
   <!--[if lte IE 8]>
   <link href="http://fonts.googleapis.com/css?family=Crimson+Text:400" rel="stylesheet" type="text/css">
