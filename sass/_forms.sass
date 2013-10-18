@@ -1,0 +1,144 @@
+$input-font-size: 16px
+$input-line-height: 21px
+$input-margin: 8px
+$input-padding: 8px
+$input-height: $input-line-height + 2 * $input-padding
+$button-height: $input-height
+$custom-select-padding: 5px
+
+
+#{$all-text-inputs}, textarea
+  border: none
+  border-radius: 2px
+  color: $black
+  display: block
+  font-size: $input-font-size
+  line-height: $input-line-height
+  padding: $input-padding $input-padding * 2
+// For cross-browser conformity.
+#{$all-text-inputs}
+  height: $input-height
+
+.button
+  @extend %gotham-bold
+  background: $orange
+  border: none
+  border-radius: 2px
+  color: $white
+  display: inline-block
+  font-size: 13px
+  height: $button-height
+  line-height: $button-height
+  padding: 0 20px
+  white-space: nowrap
+  &:hover:not([disabled])
+    +background-image(linear-gradient(lighten($orange, 5%), $orange))
+  &:active:not([disabled])
+    +background-image(linear-gradient($orange, lighten($orange, 5%)))
+  &[disabled]
+    opacity: .6
+
+.button--dim
+  background: $grey-c3
+  &:hover:not([disabled])
+    +background-image(linear-gradient(lighten($grey-c3, 5%), $grey-c3))
+  &:active:not([disabled])
+    +background-image(linear-gradient($grey-c3, lighten($grey-c3, 5%)))
+
+
+.custom-select
+  @extend %gotham-bold
+  +user-select(none)
+  background: $white
+  border-radius: 2px
+  color: $black
+  font-size: 13px
+  height: $input-height
+  margin-top: $input-margin
+  position: relative
+  white-space: nowrap
+
+.custom-select__indicator
+  +position(absolute, $custom-select-padding $custom-select-padding $custom-select-padding 0)
+  +retina-image('../images/icon/custom-select-indicator', 14px 8px)
+  background-color: $orange
+  background-repeat: no-repeat
+  background-position: 6px 11px
+  border-radius: 2px
+  width: $input-height - $custom-select-padding * 2
+  z-index: 3
+  .custom-select.is-open &
+    display: none
+
+.custom-select__container
+  +position(absolute, 0px 0px 0 0px)
+  background: $white
+  border-radius: 2px
+  box-shadow: 0 1px 2px 0 rgba($black, .2)
+  max-height: 300px
+  overflow-y: scroll
+  padding: $custom-select-padding
+  z-index: 2
+  .custom-select.is-open &
+    left: -$custom-select-padding
+    right: -$custom-select-padding
+    top: -$custom-select-padding
+    z-index: 4
+
+
+.custom-select__option
+  $vmiddle-correction: 2px
+  border-radius: 2px
+  display: none
+  line-height: $input-height - $custom-select-padding * 2 - $vmiddle-correction
+  padding: 0 $input-padding * 2 - $custom-select-padding
+  padding-top: $vmiddle-correction
+  .custom-select.is-open &
+    display: block
+.custom-select__option.is-selected
+  display: block
+.custom-select.is-open .custom-select__option
+  background: $grey-f3
+  line-height: $input-height
+  margin-top: 2px
+  &:first-child
+    margin-top: 0
+  &:hover
+    background: $orange
+    color: $white
+  &.is-selected:after
+    float: right
+    content: "•"
+  &.is-disabled
+    background: transparent
+    color: $grey-93
+
+// TODO; copied from phase-0 for reference
+  .join-us__radio
+    +font-header(12)
+    border-top: 1px solid rgba($white, .3)
+    letter-spacing: 2px
+    margin-bottom: 12px
+    padding-top: 12px
+    text-align: left
+    > label
+      +retina-image('../images/icon/radio-unchecked', 14px 14px)
+      background-position: 0 0
+      background-repeat: no-repeat
+      margin-left: 15px
+      line-height: 14px
+      padding-left: 20px
+      cursor: pointer
+      &.checked
+        +retina-image('../images/icon/radio-checked', 14px 14px)
+      &:first-child
+        margin-left: 0
+      > input
+        // IE does not allow modification of form inputs with `display: none`.
+        position: absolute
+        z-index: -1
+      @media #{$media-ipad}
+        padding-left: 24px
+        margin-left: 30px
+        > input
+          margin-right: 5px
