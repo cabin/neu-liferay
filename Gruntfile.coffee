@@ -39,6 +39,7 @@ module.exports = (grunt) ->
             '<%= path.components %>/cabin-utils/dist/preload.js'
             '<%= path.components %>/cabin-utils/dist/isRetina.js'
             '<%= path.components %>/cabin-utils/dist/at2x.js'
+            '<%= path.components %>/cabin-utils/dist/scrolling.js'
             '<%= path.components %>/greensock-js/src/uncompressed/TweenLite.js'
             '<%= path.components %>/greensock-js/src/uncompressed/TimelineLite.js'
             '<%= path.components %>/greensock-js/src/uncompressed/plugins/CSSPlugin.js'
